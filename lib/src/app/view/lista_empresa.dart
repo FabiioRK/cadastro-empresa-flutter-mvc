@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'cadastroEmpresa.dart';
+import '../model/empresa.dart';
+import 'cadastro_empresa.dart';
 
 class ListaEmpresa extends StatelessWidget {
   final List<Empresa> _empresas = [];

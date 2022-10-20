@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'cadastroEmpresa.dart';
+import '../model/empresa.dart';
 
 class InformacaoEmpresa extends StatelessWidget {
   final Empresa _empresa;

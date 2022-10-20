@@ -1,18 +1,8 @@
 import 'package:flutter/material.dart';
-import 'infoEmpresa.dart';
+import '../model/empresa.dart';
+import 'info_empresa.dart';
 
-class Empresa {
-  final String razaoSocial;
-  final String cnpj;
-  final String? logoUrl;
 
-  Empresa(this.razaoSocial, this.cnpj, [this.logoUrl]);
-
-  @override
-  String toString() {
-    return 'Empresa{razaoSocial: $razaoSocial, cnpj: $cnpj, logoUrl: $logoUrl}';
-  }
-}
 
 class EmpresaCadastrada extends StatelessWidget {
   final Empresa _empresa;
