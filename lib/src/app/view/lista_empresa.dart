@@ -1,24 +1,24 @@
-import 'package:flutter/material.dart';
-import '../model/empresa.dart';
-import 'cadastro_empresa.dart';
+import 'package:formulario/src/model.dart';
+import 'package:formulario/src/view.dart';
+import 'package:formulario/src/controller.dart';
 
 class ListaEmpresa extends StatelessWidget {
-  final List<Empresa> _empresas = [];
 
   @override
   Widget build(BuildContext context) {
-    _empresas.add(Empresa("teste123", "99.999.999/0001-11"));
-    _empresas.add(Empresa("Romão Corretora de Seguros", "28.423.067/0001-58",
+    ListaEmpresaController.empresas.add(Empresa("teste123", "99.999.999/0001-11"));
+    ListaEmpresaController.empresas.add(Empresa("Romão Corretora de Seguros", "28.423.067/0001-58",
         "https://i.imgur.com/I4yFbLW.jpg"));
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Empresas cadastradas"),
       ),
-      body: _empresas.isNotEmpty
+      body: ListaEmpresaController.empresas.isNotEmpty
           ? ListView.builder(
-              itemCount: _empresas.length,
+              itemCount: ListaEmpresaController.empresas.length,
               itemBuilder: (context, indice) {
-                final empresa = _empresas[indice];
+                final empresa = ListaEmpresaController.empresas[indice];
                 return EmpresaCadastrada(empresa);
               },
             )
@@ -29,7 +29,7 @@ class ListaEmpresa extends StatelessWidget {
         child: const Icon(Icons.add),
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return FormularioCadastro();
+            return CampoFormularioCadastro();
           }));
         },
       ),
