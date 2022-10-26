@@ -28,7 +28,7 @@ class InformacaoEmpresa extends StatelessWidget {
               height: 250.0,
               child: Column(
                 children: <Widget>[
-                  InfoEmpresaController().possuiLogo(_empresa)
+                  InformacaoEmpresaController().possuiLogo(_empresa)
                       ? LogoEmpresa(_empresa.logoUrl!)
                       : LogoEmpresa("https://i.imgur.com/sdpbThM.jpg"),
                   InformacoesContato(_empresa.razaoSocial),

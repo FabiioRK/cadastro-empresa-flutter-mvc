@@ -1,24 +1,29 @@
 import 'package:formulario/src/model.dart';
 import 'package:formulario/src/view.dart';
-import 'package:formulario/src/controller.dart';
 
-class ListaEmpresa extends StatelessWidget {
+class ListaEmpresa extends StatefulWidget {
+  ListaEmpresa({super.key});
+
+  final List<Empresa> _empresas = [];
 
   @override
-  Widget build(BuildContext context) {
-    ListaEmpresaController.empresas.add(Empresa("teste123", "99.999.999/0001-11"));
-    ListaEmpresaController.empresas.add(Empresa("Romão Corretora de Seguros", "28.423.067/0001-58",
-        "https://i.imgur.com/I4yFbLW.jpg"));
+  State<StatefulWidget> createState() {
+    return ListaEmpresaState();
+  }
+}
 
+class ListaEmpresaState extends State<ListaEmpresa> {
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Empresas cadastradas"),
       ),
-      body: ListaEmpresaController.empresas.isNotEmpty
+      body: widget._empresas.isNotEmpty
           ? ListView.builder(
-              itemCount: ListaEmpresaController.empresas.length,
+              itemCount: widget._empresas.length,
               itemBuilder: (context, indice) {
-                final empresa = ListaEmpresaController.empresas[indice];
+                final empresa = widget._empresas[indice];
                 return EmpresaCadastrada(empresa);
               },
             )
@@ -29,10 +34,18 @@ class ListaEmpresa extends StatelessWidget {
         child: const Icon(Icons.add),
         onPressed: () {
           Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return CampoFormularioCadastro();
-          }));
+            return const CampoFormularioCadastro();
+          })).then((empresaRecebida) => atualizaEmpresa(empresaRecebida));
         },
       ),
     );
+  }
+
+  void atualizaEmpresa(Empresa? empresaRecebida) {
+    if (empresaRecebida != null) {
+      setState(() {
+        widget._empresas.add(empresaRecebida);
+      });
+    }
   }
 }

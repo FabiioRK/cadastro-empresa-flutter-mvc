@@ -15,7 +15,7 @@ class EmpresaCadastrada extends StatelessWidget {
         title: Text(_empresa.razaoSocial),
         subtitle: Text(_empresa.cnpj),
       ),
-      onTap: () => InfoEmpresaController().infoEmpresa(_empresa, context),
+      onTap: () => InformacaoEmpresaController().infoEmpresa(_empresa, context),
     );
   }
 }

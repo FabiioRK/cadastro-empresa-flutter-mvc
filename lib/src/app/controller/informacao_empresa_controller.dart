@@ -1,8 +1,7 @@
 import 'package:formulario/src/model.dart';
 import 'package:formulario/src/view.dart';
 
-
-class InfoEmpresaController {
+class InformacaoEmpresaController {
 
   void infoEmpresa(Empresa empresa, BuildContext context) {
     Navigator.push(context, MaterialPageRoute(builder: (context) {
