@@ -5,17 +5,25 @@ import 'package:formulario/src/app/model/currency.dart';
 import 'package:formulario/src/app/view/currency_cadastrada.dart';
 import 'package:formulario/src/app/controller/currency_controller.dart';
 
-class InformacaoEmpresa extends StatelessWidget {
+class InformacaoEmpresa extends StatefulWidget {
   final Empresa _empresa;
-  Future<List<CurrencyModel>> _currency = RequestHelper().getCurrencies();
 
-  InformacaoEmpresa(this._empresa);
+  const InformacaoEmpresa(this._empresa, {super.key});
+
+  @override
+  State<StatefulWidget> createState() {
+    return InformacaoEmpresaState();
+  }
+}
+
+class InformacaoEmpresaState extends State<InformacaoEmpresa> {
+  Future<List<CurrencyModel>> _currency =  RequestHelper().getCurrencies();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(_empresa.razaoSocial),
+        title: Text(widget._empresa.razaoSocial),
       ),
       body: Column(
         children: <Widget>[
@@ -32,18 +40,29 @@ class InformacaoEmpresa extends StatelessWidget {
               height: 250.0,
               child: Column(
                 children: <Widget>[
-                  InformacaoEmpresaController().possuiLogo(_empresa)
-                      ? LogoEmpresa(_empresa.logoUrl!)
+                  InformacaoEmpresaController().possuiLogo(widget._empresa)
+                      ? LogoEmpresa(widget._empresa.logoUrl!)
                       : LogoEmpresa("https://i.imgur.com/sdpbThM.jpg"),
                   InformacoesContato(
-                      "${_empresa.razaoSocial} | ${_empresa.cnpj} | ${_empresa.valor}"),
-                  ListView.builder(
-                    itemCount: _currency.length,
-                    itemBuilder: (context, indice) {
-                      final currency = _currency[indice];
-                      return CurrencyCadastrada(currency);
-                    },
-                  )
+                      "${widget._empresa.razaoSocial} | ${widget._empresa.cnpj} | ${widget._empresa.valor}"),
+                  Expanded(
+                    child: FutureBuilder(
+                      future: _currency,
+                      builder: (context, AsyncSnapshot snapshot) {
+                        if (!snapshot.hasData) {
+                          return const Center(child: CircularProgressIndicator());
+                        } else {
+                          return ListView.builder(
+                            itemCount: snapshot.data,
+                            itemBuilder: (context, indice) {
+                              final currency = snapshot.data[indice];
+                              return CurrencyCadastrada(currency);
+                            },
+                          );
+                        }
+                      },
+                    ),
+                  ),
                 ],
               ),
             ),

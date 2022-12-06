@@ -11,17 +11,18 @@ class Api {
   Future<List<CurrencyModel>> fetchCurrency() async {
     final response = await http.get(Uri.parse(
         'https://currencyapi.net/api/v1/rates?key=${apiKey}&output=JSON'));
-    var data = jsonDecode(response.body);
+    var data = jsonDecode(response.body)['rates'];
 
     if (response.statusCode == 200) {
-      List<CurrencyModel> currencies = [];
-      for (var code in data["data"].keys) {
-        CurrencyModel currency = CurrencyModel(
-            code: data["data"][code]["code"],
-            value: data["data"][code]["value"].toDouble());
-        currencies.add(currency);
-      }
-      return currencies;
+      print(data);
+
+      Future<List<CurrencyModel>> listCurrency = data
+      .map((data) => CurrencyModel.fromJson(data))
+      .toList();
+
+      print(listCurrency);
+
+      return listCurrency;
     } else {
       throw Exception('Failed');
     }
