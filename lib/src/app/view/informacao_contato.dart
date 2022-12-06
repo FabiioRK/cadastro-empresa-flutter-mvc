@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class InformacoesContato extends StatelessWidget {
-  final String _razaoSocial;
+  final String _texto;
 
-  InformacoesContato(this._razaoSocial);
+  InformacoesContato(this._texto);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class InformacoesContato extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   Text(
-                    _razaoSocial,
+                    _texto,
                     style: const TextStyle(
                       fontSize: 20.0,
                       color: Colors.black54,

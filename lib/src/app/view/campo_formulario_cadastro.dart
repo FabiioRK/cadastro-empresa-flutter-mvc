@@ -12,47 +12,52 @@ class CampoFormularioCadastro extends StatefulWidget {
 
 class CampoFormularioCadastroState extends State<CampoFormularioCadastro> {
   final TextEditingController _controladorCampoRazaoSocial =
-  TextEditingController();
+      TextEditingController();
   final TextEditingController _controladorCampoCnpj = TextEditingController();
+  final TextEditingController _controladorCampoValue = TextEditingController();
   final TextEditingController _controladorCampoLogoUrl =
-  TextEditingController();
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Cadastrar empresa"),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            EditorCampoCadastro(
-              controlador: _controladorCampoRazaoSocial,
-              rotulo: "Razão Social",
-              dica: "João da Silva LTDA",
-            ),
-            EditorCampoCadastro(
-              controlador: _controladorCampoCnpj,
-              rotulo: "CNPJ",
-              dica: "12.345.678/0001-99",
-            ),
-            EditorCampoCadastro(
-              controlador: _controladorCampoLogoUrl,
-              rotulo: "Logo da Empresa",
-              dica: "URL da imagem",
-            ),
-            ElevatedButton(
-              onPressed: () => CadastroEmpresaController().criaEmpresa(
-                  _controladorCampoRazaoSocial,
-                  _controladorCampoCnpj,
-                  _controladorCampoLogoUrl,
-                  context),
-              child: const Text("Confirmar"),
-            )
-          ],
+        appBar: AppBar(
+          title: const Text("Cadastrar empresa"),
         ),
-      )
-    );
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              EditorCampoCadastro(
+                controlador: _controladorCampoRazaoSocial,
+                rotulo: "Razão Social",
+                dica: "João da Silva LTDA",
+              ),
+              EditorCampoCadastro(
+                controlador: _controladorCampoCnpj,
+                rotulo: "CNPJ",
+                dica: "12.345.678/0001-99",
+              ),
+              EditorCampoCadastro(
+                controlador: _controladorCampoValue,
+                rotulo: "Valor de ação em dolar",
+                dica: "39.47",
+              ),
+              EditorCampoCadastro(
+                controlador: _controladorCampoLogoUrl,
+                rotulo: "Logo da Empresa",
+                dica: "URL da imagem",
+              ),
+              ElevatedButton(
+                onPressed: () => CadastroEmpresaController().criaEmpresa(
+                    _controladorCampoRazaoSocial,
+                    _controladorCampoCnpj,
+                    _controladorCampoValue,
+                    _controladorCampoLogoUrl,
+                    context),
+                child: const Text("Confirmar"),
+              )
+            ],
+          ),
+        ));
   }
-
 }

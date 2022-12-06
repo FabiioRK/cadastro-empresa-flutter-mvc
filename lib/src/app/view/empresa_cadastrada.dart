@@ -2,7 +2,6 @@ import 'package:formulario/src/controller.dart';
 import 'package:formulario/src/model.dart';
 
 class EmpresaCadastrada extends StatelessWidget {
-
   final Empresa _empresa;
 
   const EmpresaCadastrada(this._empresa, {super.key});
@@ -13,10 +12,9 @@ class EmpresaCadastrada extends StatelessWidget {
       child: ListTile(
         leading: const Icon(Icons.contact_page_sharp),
         title: Text(_empresa.razaoSocial),
-        subtitle: Text(_empresa.cnpj),
+        subtitle: Text("${_empresa.cnpj} | ${_empresa.valor}"),
       ),
       onTap: () => InformacaoEmpresaController().infoEmpresa(_empresa, context),
     );
   }
 }
-

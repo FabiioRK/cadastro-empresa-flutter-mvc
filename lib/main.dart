@@ -1,6 +1,5 @@
 import 'package:formulario/src/view.dart';
 
-void main() => runApp(CFContabilApp());
-
-
-
+void main() {
+  runApp(CFContabilApp());
+}

@@ -1,9 +1,13 @@
 import 'package:formulario/src/model.dart';
 import 'package:formulario/src/view.dart';
 import 'package:formulario/src/controller.dart';
+import 'package:formulario/src/app/model/currency.dart';
+import 'package:formulario/src/app/view/currency_cadastrada.dart';
+import 'package:formulario/src/app/controller/currency_controller.dart';
 
 class InformacaoEmpresa extends StatelessWidget {
   final Empresa _empresa;
+  Future<List<CurrencyModel>> _currency = RequestHelper().getCurrencies();
 
   InformacaoEmpresa(this._empresa);
 
@@ -31,7 +35,15 @@ class InformacaoEmpresa extends StatelessWidget {
                   InformacaoEmpresaController().possuiLogo(_empresa)
                       ? LogoEmpresa(_empresa.logoUrl!)
                       : LogoEmpresa("https://i.imgur.com/sdpbThM.jpg"),
-                  InformacoesContato(_empresa.razaoSocial),
+                  InformacoesContato(
+                      "${_empresa.razaoSocial} | ${_empresa.cnpj} | ${_empresa.valor}"),
+                  ListView.builder(
+                    itemCount: _currency.length,
+                    itemBuilder: (context, indice) {
+                      final currency = _currency[indice];
+                      return CurrencyCadastrada(currency);
+                    },
+                  )
                 ],
               ),
             ),
@@ -41,6 +53,3 @@ class InformacaoEmpresa extends StatelessWidget {
     );
   }
 }
-
-
-
