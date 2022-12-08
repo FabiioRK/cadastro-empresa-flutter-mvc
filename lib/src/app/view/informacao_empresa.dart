@@ -39,6 +39,11 @@ class InformacaoEmpresaState extends State<InformacaoEmpresa> {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget._empresa.razaoSocial),
+          centerTitle: true,
+          titleTextStyle: TextStyle(
+            fontFamily: 'OpenSansBold',
+            fontSize: 26.0,
+          ),
         ),
         body: Column(children: <Widget>[
           Container(
@@ -46,7 +51,10 @@ class InformacaoEmpresaState extends State<InformacaoEmpresa> {
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Colors.blue, Color.fromRGBO(0, 0, 51, 50)],
+                  colors: [
+                    Color.fromARGB(255, 82, 121, 153),
+                    Color.fromARGB(206, 15, 15, 39)
+                  ],
                 ),
               ),
               child: SizedBox(
@@ -57,7 +65,7 @@ class InformacaoEmpresaState extends State<InformacaoEmpresa> {
                         ? LogoEmpresa(widget._empresa.logoUrl!)
                         : LogoEmpresa("https://i.imgur.com/sdpbThM.jpg"),
                     InformacoesContato(
-                        "${widget._empresa.razaoSocial} | ${widget._empresa.cnpj} | ${widget._empresa.valor} BRL"),
+                        "${widget._empresa.cnpj} | ${widget._empresa.valor} BRL"),
                   ]))),
           Expanded(
               child: ListView.builder(

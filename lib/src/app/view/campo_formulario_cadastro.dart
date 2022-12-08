@@ -22,8 +22,22 @@ class CampoFormularioCadastroState extends State<CampoFormularioCadastro> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text("Cadastrar empresa"),
-        ),
+            title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const [
+              Text(
+                'Cadastrar empresa ',
+                style: TextStyle(
+                  fontFamily: 'OpenSansBold',
+                  fontSize: 26.0,
+                ),
+              ),
+              Icon(
+                Icons.add_business_rounded,
+                color: Colors.blue,
+                size: 30.0,
+              ),
+            ])),
         body: SingleChildScrollView(
           child: Column(
             children: <Widget>[
