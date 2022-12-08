@@ -2,23 +2,47 @@
 
 A new Flutter project for the Mobile Development course of Unitins - 2022/2.
 
+## 💻 Prerequisites
+
+Before starting, verify if you have these:
+* Flutter SDK 3.3.9+
+* Dart SDK 2.18.5+
+
+## 🚀 Installing
+
+Windows:
+```
+<git clone https://github.com/FabiioRK/cadastro-empresa-flutter-mvc.git>
+```
+
 ## 🧐 How to use 🧐
 
-Lorem ipsum.
+Run the project in any IDE that supports Flutter. The App is pretty straightforward with a simple system of adding businesses details, share price and checking the price in other currencies.
 
 ## 📡 Link to API 📡
 
-Yet to define.
+https://hgbrasil.com/status/finance
+The default currency of the API is BRL.
 
-## Getting Started
+## 🤝 Contributors
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<table>
+  <tr>
+    <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/u/62519844?v=4" width="100px;" alt="Foto do Fábio"/><br>
+        <sub>
+          <b>Fábio Romão</b>
+        </sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/u/31485974?v=4" width="100px;" alt="Foto do Alessandro"/><br>
+        <sub>
+          <b>Alessandro Gabriel</b>
+        </sub>
+      </a>
+    </td>
+  </tr>
+</table>
