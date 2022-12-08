@@ -1,11 +1,14 @@
-class CurrencyModel {
-  final String? code;
-  final double? value;
+class Currency {
+  String? name;
+  double? buy;
 
-  CurrencyModel({this.code, this.value});
+  Currency({var this.name, var this.buy});
 
-  factory CurrencyModel.fromJson(Map<String, dynamic> json) => CurrencyModel(
-      code: json['code'],
-      value: json['value'],
-    );
+  factory Currency.fromJson(Map<String, dynamic> json) =>
+      Currency(name: json['name'], buy: json['buy']);
+
+  @override
+  String toString() {
+    return 'Currency{name: $name, buy: $buy}';
   }
+}

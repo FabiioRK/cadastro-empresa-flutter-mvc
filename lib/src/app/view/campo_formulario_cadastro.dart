@@ -39,7 +39,7 @@ class CampoFormularioCadastroState extends State<CampoFormularioCadastro> {
               ),
               EditorCampoCadastro(
                 controlador: _controladorCampoValue,
-                rotulo: "Valor de ação em dolar",
+                rotulo: "Valor de ação em real",
                 dica: "39.47",
               ),
               EditorCampoCadastro(

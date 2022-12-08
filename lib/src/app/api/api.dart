@@ -6,25 +6,63 @@ import 'package:http/http.dart' as http;
 class Api {
   const Api();
 
-  final String apiKey = 'GWokmKwGWNVOYIlVhk540pdnYArZXPvQSDvp';
+  Future<List<Currency>> fetchCurrency(String apiKey) async {
+    final response = await http
+        .get(Uri.parse('https://api.hgbrasil.com/finance?key=${apiKey}'));
 
-  Future<List<CurrencyModel>> fetchCurrency() async {
-    final response = await http.get(Uri.parse(
-        'https://currencyapi.net/api/v1/rates?key=${apiKey}&output=JSON'));
-    var data = jsonDecode(response.body)['rates'];
+    // Usar esse método não deu certo!
+    // var data = jsonDecode(response.body)['results']['currencies'];
+    // Future<List<Currency>> listCurrency = data
+    // .map((data) => Currency.fromJson(data))
+    // .toList();
 
-    if (response.statusCode == 200) {
-      print(data);
+    List<Currency> listCurrency = [];
 
-      Future<List<CurrencyModel>> listCurrency = data
-      .map((data) => CurrencyModel.fromJson(data))
-      .toList();
+    var map = jsonDecode(response.body)['results']['currencies']['USD'];
+    Currency currency = Currency.fromJson(map);
+    print(currency);
+    listCurrency.add(currency);
 
-      print(listCurrency);
+    map = jsonDecode(response.body)['results']['currencies']['EUR'];
+    currency = Currency.fromJson(map);
+    print(currency);
+    listCurrency.add(currency);
 
-      return listCurrency;
-    } else {
-      throw Exception('Failed');
-    }
+    map = jsonDecode(response.body)['results']['currencies']['GBP'];
+    currency = Currency.fromJson(map);
+    print(currency);
+    listCurrency.add(currency);
+
+    map = jsonDecode(response.body)['results']['currencies']['ARS'];
+    currency = Currency.fromJson(map);
+    print(currency);
+    listCurrency.add(currency);
+
+    map = jsonDecode(response.body)['results']['currencies']['CAD'];
+    currency = Currency.fromJson(map);
+    print(currency);
+    listCurrency.add(currency);
+
+    map = jsonDecode(response.body)['results']['currencies']['AUD'];
+    currency = Currency.fromJson(map);
+    print(currency);
+    listCurrency.add(currency);
+
+    map = jsonDecode(response.body)['results']['currencies']['JPY'];
+    currency = Currency.fromJson(map);
+    print(currency);
+    listCurrency.add(currency);
+
+    map = jsonDecode(response.body)['results']['currencies']['CNY'];
+    currency = Currency.fromJson(map);
+    print(currency);
+    listCurrency.add(currency);
+
+    map = jsonDecode(response.body)['results']['currencies']['BTC'];
+    currency = Currency.fromJson(map);
+    print(currency);
+    listCurrency.add(currency);
+
+    return listCurrency;
   }
 }
